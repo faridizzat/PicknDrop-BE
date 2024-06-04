@@ -1,18 +1,15 @@
 import pkg from "pg";
 import { createUserTable } from "../model/user.js";
 import { createChildrenTable } from "../model/children.js";
+import "dotenv/config";
 
 const { Pool } = pkg;
 
 export const pool = new Pool({
-  //   host: process.env.PGHOST,
-  //   user: process.env.PGUSER,
-  //   password: process.env.PGPASSWORD,
-  //   database: process.env.PGDATABASE,
-  host: "localhost",
-  user: "postgres",
-  password: "admin123",
-  database: "pick-n-drop-app",
+  host: process.env.PGHOST,
+  user: process.env.PGUSER,
+  password: process.env.PGPASSWORD,
+  database: process.env.PGDATABASE,
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 2000,
