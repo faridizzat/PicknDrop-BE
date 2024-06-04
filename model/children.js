@@ -4,9 +4,9 @@ const query = `
     CREATE TABLE IF NOT EXISTS T_CHILDREN ( 
         id SERIAL PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
-        user_id INTEGER REFERENCES T_USER (id),
+        user_id INTEGER REFERENCES T_USER(id) NOT NULL,
         created_at TIMESTAMP DEFAULT NOW(),
-        atHome BOOLEAN DEFAULT TRUE
+        at_home BOOLEAN DEFAULT TRUE
     )
 `;
 
