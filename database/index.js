@@ -1,4 +1,6 @@
 import pkg from "pg";
+import { createUserTable } from "../model/user.js";
+import { createChildrenTable } from "../model/children.js";
 
 const { Pool } = pkg;
 
@@ -28,11 +30,11 @@ export async function databaseInit() {
     console.log(`Connected to ${name} at ${time}`);
 
     // create database tables
+    createUserTable();
+    createChildrenTable();
   } catch (error) {
     //   promise is rejected
     console.error(error);
     console.error("Database connection failed");
   }
 }
-
-export default databaseInit;
