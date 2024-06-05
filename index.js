@@ -36,10 +36,9 @@ app.post("/children", isAuth, createNewChildren);
 //get Children
 app.get("/children", isAuth, getAllChildren);
 //delete Children
-app.post("/children", isAuth, deleteChildren);
+app.delete("/children", isAuth, deleteChildren);
 //update Children
 app.put("/children", isAuth, updateChildren);
-
 
 //start server
 app.listen(PORT, () => {
