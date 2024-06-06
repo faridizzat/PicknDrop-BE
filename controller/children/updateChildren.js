@@ -2,7 +2,7 @@ import { pool } from "../../database/index.js";
 
 const updateChildren = async (req, res) => {
   try {
-    const at_home = req.body.status;
+    const at_home = req.body.at_home;
     const userId = req.userId;
     const id = req.body.id;
 
