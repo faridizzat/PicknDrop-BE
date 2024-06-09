@@ -6,7 +6,8 @@ const query = `
         name VARCHAR(255) NOT NULL,
         user_id INTEGER REFERENCES T_USER(id) NOT NULL,
         created_at TIMESTAMP DEFAULT NOW(),
-        at_home BOOLEAN DEFAULT TRUE
+        at_home BOOLEAN DEFAULT TRUE,
+        img_path VARCHAR(255)
     )
 `;
 

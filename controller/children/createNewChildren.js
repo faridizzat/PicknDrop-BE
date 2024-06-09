@@ -1,14 +1,16 @@
 import { pool } from "../../database/index.js";
 
 const query = `
-INSERT INTO T_CHILDREN (name, user_id) VALUES ($1, $2) RETURNING id, name`;
+INSERT INTO T_CHILDREN (name, user_id, img_path) VALUES ($1, $2, $3) RETURNING id, name, img_path`;
 
 const createNewChildren = async (req, res) => {
   try {
     const name = req.body.name;
     const userId = req.userId;
-    const dbRes = await pool.query(query, [name, userId]);
+    const imgPath = req.body.imgPath;
+    const dbRes = await pool.query(query, [name, userId, imgPath]);
     const data = dbRes.rows;
+    console.log(data);
     res.status(201).json({
       message: "Children created successfully",
       data,
