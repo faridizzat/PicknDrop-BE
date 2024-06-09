@@ -10,6 +10,7 @@ import deleteChildren from "./controller/children/deleteChildren.js";
 import updateChildren from "./controller/children/updateChildren.js";
 import cors from "cors";
 import updateUser from "./controller/user/updateUser.js";
+import getUserById from "./controller/user/getUserById.js";
 
 const app = express();
 const PORT = 3000;
@@ -31,6 +32,9 @@ app.post("/register", createNewUser);
 
 //login user
 app.post("/login", loginUser);
+
+//get user profile
+app.get("/user", isAuth, getUserById);
 
 //update user profile
 app.put("/user", isAuth, updateUser);
