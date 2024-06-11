@@ -10,7 +10,6 @@ const getAllChildren = async (req, res) => {
     const dbRes = await pool.query(query, [userId]);
 
     const data = dbRes.rows;
-    console.log(data);
 
     res.status(200).json({
       status: "success",
