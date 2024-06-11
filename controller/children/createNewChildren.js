@@ -10,7 +10,6 @@ const createNewChildren = async (req, res) => {
     const imgPath = req.body.imgPath;
     const dbRes = await pool.query(query, [name, userId, imgPath]);
     const data = dbRes.rows;
-    console.log(data);
     res.status(201).json({
       message: "Children created successfully",
       data,

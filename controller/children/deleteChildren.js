@@ -5,12 +5,8 @@ const deleteChildren = async (req, res) => {
     const userId = req.userId;
     const id = req.body.id;
 
-    console.log(id, userId);
-
     const idQuery = id.map((_, index) => `$${index + 2}`).join(", ");
     const query = `DELETE FROM T_CHILDREN where user_id=$1 and id IN (${idQuery});`;
-
-    console.log(query);
 
     const dbRes = await pool.query(query, [userId, ...id]);
 

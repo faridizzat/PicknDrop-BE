@@ -6,7 +6,6 @@ const getAllChildren = async (req, res) => {
   try {
     const userId = req.userId;
 
-    console.log(userId);
     const dbRes = await pool.query(query, [userId]);
 
     const data = dbRes.rows;
