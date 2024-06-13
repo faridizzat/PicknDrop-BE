@@ -6,7 +6,7 @@ const query = `
         child_name VARCHAR(255) NOT NULL,
         child_id INTEGER REFERENCES T_CHILDREN(id) NOT NULL,
         user_id INTEGER REFERENCES T_USER(id) NOT NULL,
-        attendance_date DATE NOT NULL,
+        attendance_date VARCHAR(255) NOT NULL,
         pickup_time TIME DEFAULT NULL ,
         dropoff_time TIME  DEFAULT NULL
     )

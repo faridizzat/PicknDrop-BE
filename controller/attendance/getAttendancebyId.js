@@ -1,6 +1,6 @@
 import { pool } from "../../database/index.js";
 
-const query = `SELECT child_name, child_id, attendance_date, pickup_time, dropoff_time FROM T_ATTENDANCE where user_id=$1 ORDER BY attendance_date;`;
+const query = `SELECT * FROM T_ATTENDANCE where user_id=$1 ORDER BY attendance_date desc;`;
 
 const getAttendanceById = async (req, res) => {
   try {
