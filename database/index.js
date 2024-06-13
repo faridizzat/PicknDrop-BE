@@ -1,6 +1,7 @@
 import pkg from "pg";
 import { createUserTable } from "../model/user.js";
 import { createChildrenTable } from "../model/children.js";
+import { createAttendanceTable } from "../model/attendance.js";
 import "dotenv/config";
 
 const { Pool } = pkg;
@@ -29,6 +30,7 @@ export async function databaseInit() {
     // create database tables
     createUserTable();
     createChildrenTable();
+    createAttendanceTable();
   } catch (error) {
     //   promise is rejected
     console.error(error);
