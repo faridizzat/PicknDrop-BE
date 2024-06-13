@@ -1,15 +1,16 @@
 import { pool } from "../../database/index.js";
+import date from "date-and-time";
 
-const updateQueryPickup = `UPDATE T_ATTENDANCE SET pickup_time=$1 WHERE child_id=$2 and date=$3;`;
+const updateQueryPickup = `UPDATE T_ATTENDANCE SET pickup_time=$1 WHERE child_id=ANY($2) and attendance_date=$3;`;
 
-const updateQueryDropoff = `UPDATE T_ATTENDANCE SET dropoff_time=$1 WHERE child_id=$2 and date=$3;`;
+const updateQueryDropoff = `UPDATE T_ATTENDANCE SET dropoff_time=$1 WHERE child_id=ANY($2)and attendance_date=$3;`;
 
 const updateAttendance = async (req, res) => {
   try {
+    const now = new Date();
+    const time = date.format(now, "HH:mm:ss");
     const childId = req.body.childId;
     const attendanceDate = req.body.attendanceDate;
-    const user_id = req.userId;
-    const time = req.body.time;
     const at_home = req.body.at_home;
 
     if (at_home) {

@@ -1,13 +1,12 @@
 import { pool } from "../../database/index.js";
 import date from "date-and-time";
 
-const query = `SELECT * FROM T_ATTENDANCE where user_id=$1 and attendance_date=$2 and child_id=$3;`;
+const query = `SELECT * FROM T_ATTENDANCE where user_id=$1 and attendance_date=$2 and child_id= ANY($3);`;
 
 const insertQuery = `INSERT INTO T_ATTENDANCE (child_id, child_name, user_id, attendance_date, pickup_time, dropoff_time)
-SELECT $1, name, $2, $3, NULL, NULL
+SELECT id, name, $2, $3, NULL, NULL
 FROM T_CHILDREN
-WHERE id = $1;
-`;
+WHERE id = ANY($1);`;
 
 const createAttendance = async (req, res) => {
   try {
@@ -21,7 +20,6 @@ const createAttendance = async (req, res) => {
     //check if attendance already exist for today
     const dbRes = await pool.query(query, [user_id, attendanceDate, childId]);
     const data = dbRes.rows;
-    console.log(data);
 
     if (data.length === 0) {
       await pool.query(insertQuery, [childId, user_id, attendanceDate]);
