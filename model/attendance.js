@@ -4,7 +4,7 @@ const query = `
     CREATE TABLE IF NOT EXISTS T_ATTENDANCE ( 
         id SERIAL PRIMARY KEY,
         child_name VARCHAR(255) NOT NULL,
-        child_id INTEGER REFERENCES T_CHILDREN(id) NOT NULL,
+        child_id VARCHAR(255) NOT NULL,
         user_id INTEGER REFERENCES T_USER(id) NOT NULL,
         attendance_date VARCHAR(255) NOT NULL,
         pickup_time TIME DEFAULT NULL ,
