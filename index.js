@@ -15,6 +15,7 @@ import getAttendanceById from "./controller/attendance/getAttendancebyId.js";
 import createAttendance from "./controller/attendance/createAttendance.js";
 import date from "date-and-time";
 import updateAttendance from "./controller/attendance/updateAttendance.js";
+import deleteAttendance from "./controller/attendance/deleteAttendance.js";
 
 const app = express();
 const PORT = 3000;
@@ -56,6 +57,7 @@ app.put("/children", isAuth, updateChildren);
 app.get("/attendance", isAuth, getAttendanceById);
 app.post("/attendance", isAuth, createAttendance);
 app.put("/attendance", isAuth, updateAttendance);
+app.delete("/attendance", isAuth, deleteAttendance);
 
 //start server
 app.listen(PORT, () => {
