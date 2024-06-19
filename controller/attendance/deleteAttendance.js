@@ -1,13 +1,13 @@
 import { pool } from "../../database/index.js";
 
-const query = `DELETE FROM T_ATTENDANCE where child_name=$1 and attendance_date=$2;`;
+const query = `DELETE FROM T_ATTENDANCE where id = $1;`;
 
 const deleteAttendance = async (req, res) => {
   try {
-    const childName = req.body.childName;
-    const attendanceDate = req.body.attendanceDate;
+    const id = req.body.id;
+    console.log(id);
 
-    const dbRes = await pool.query(query, [childName, attendanceDate]);
+    const dbRes = await pool.query(query, [id]);
     const data = dbRes.rows;
 
     res.status(200).json({
