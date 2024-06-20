@@ -11,6 +11,11 @@ import updateChildren from "./controller/children/updateChildren.js";
 import cors from "cors";
 import updateUser from "./controller/user/updateUser.js";
 import getUserById from "./controller/user/getUserById.js";
+import getAttendanceById from "./controller/attendance/getAttendancebyId.js";
+import createAttendance from "./controller/attendance/createAttendance.js";
+import date from "date-and-time";
+import updateAttendance from "./controller/attendance/updateAttendance.js";
+import deleteAttendance from "./controller/attendance/deleteAttendance.js";
 
 const app = express();
 const PORT = 3000;
@@ -48,7 +53,15 @@ app.delete("/children", isAuth, deleteChildren);
 //update Children
 app.put("/children", isAuth, updateChildren);
 
+//get attendance
+app.get("/attendance", isAuth, getAttendanceById);
+app.post("/attendance", isAuth, createAttendance);
+app.put("/attendance", isAuth, updateAttendance);
+app.delete("/attendance", isAuth, deleteAttendance);
+
 //start server
 app.listen(PORT, () => {
   console.log(`PicknDrop app listening on http://localhost:${PORT}`);
+  const currentDate = new Date();
+  console.log(date.format(currentDate, "DD/MM/YYYY"));
 });
