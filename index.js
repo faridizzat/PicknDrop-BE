@@ -24,8 +24,8 @@ app.use(cors());
 databaseInit();
 
 //health check
-app.get("/helloworld", healthCheck);
-app.get("/helloworld-json", healthCheckJson);
+app.get("/api/helloworld", healthCheck);
+app.get("/api/helloworld-json", healthCheckJson);
 
 //register new user
 app.post("/register", createNewUser);
