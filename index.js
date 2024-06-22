@@ -33,31 +33,31 @@ app.get("/api/helloworld", healthCheck);
 app.get("/api/helloworld-json", healthCheckJson);
 
 //register new user
-app.post("/register", createNewUser);
+app.post("/api/register", createNewUser);
 
 //login user
-app.post("/login", loginUser);
+app.post("/api/login", loginUser);
 
 //get user profile
-app.get("/user", isAuth, getUserById);
+app.get("/api/user", isAuth, getUserById);
 
 //update user profile
-app.put("/user", isAuth, updateUser);
+app.put("/api/user", isAuth, updateUser);
 
 //create Children
-app.post("/children", isAuth, createNewChildren);
+app.post("/api/children", isAuth, createNewChildren);
 //get Children
-app.get("/children", isAuth, getAllChildren);
+app.get("/api/children", isAuth, getAllChildren);
 //delete Children
-app.delete("/children", isAuth, deleteChildren);
+app.delete("/api/children", isAuth, deleteChildren);
 //update Children
-app.put("/children", isAuth, updateChildren);
+app.put("/api/children", isAuth, updateChildren);
 
 //get attendance
-app.get("/attendance", isAuth, getAttendanceById);
-app.post("/attendance", isAuth, createAttendance);
-app.put("/attendance", isAuth, updateAttendance);
-app.delete("/attendance", isAuth, deleteAttendance);
+app.get("/api/attendance", isAuth, getAttendanceById);
+app.post("/api/attendance", isAuth, createAttendance);
+app.put("/api/attendance", isAuth, updateAttendance);
+app.delete("/api/attendance", isAuth, deleteAttendance);
 
 //start server
 app.listen(PORT, () => {
